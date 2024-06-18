@@ -1,0 +1,51 @@
+---
+name: 海报模版
+about: 海报模版套版
+---
+**Description:** [添加标注、副本、同步小程序]
+
+**Related Issues:** [#359 ]
+
+**TODO**
+- [ ] task1
+- [ ] ...
+
+**Checklist:**
+
+- [ ]  Code has been reviewed
+- [ ]  Code complies with the project's code standards and best practices
+- [ ]  Code has passed all tests
+- [ ]  Code does not affect the normal use of existing features
+- [ ]  Documentation has been updated
+
+**Screenshots:** [Provide relevant screenshots or GIF animations]
+
+**Config**
+```
+#配置文件
+
+```
+
+**SQL**
+```
+-- sql
+alter table template add column `company_id`    int NOT NULL DEFAULT '0' after `state`;
+alter table template add column   `duplicate_id`  int NOT NULL DEFAULT '0' after `company_id`;
+alter table design add column `company_id`  int unsigned NOT NULL DEFAULT '0' after `user_id`;
+CREATE TABLE `marker`
+(
+    `id`                int unsigned NOT NULL AUTO_INCREMENT,
+    `company_id`        int unsigned NOT NULL,
+    `resource_id`       int unsigned NOT NULL,
+    `tag_id`            VARCHAR(64) NOT NULL,
+    `mark_title`        VARCHAR(64) NOT NULL,
+    `mark_time`         datetime DEFAULT CURRENT_TIMESTAMP,
+    `created_at`        datetime DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`        datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY rid(`resource_id`) USING BTREE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci
+  ROW_FORMAT = DYNAMIC;
+```
